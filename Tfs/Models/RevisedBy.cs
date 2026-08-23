@@ -2,18 +2,22 @@ using Yarkov.Tfs.Utilities;
 
 namespace Yarkov.Tfs.Models;
 
-class RevisedBy
+class RevisedBy: Contact
 {
-	public Guid Id {get;set;}
-	public string DisplayName {get;set;}
-	public string Url {get;set;}
-	public Dictionary<string, Link> _links {get;set;}
-	public string UniqueName {get;set;}
-	public string ImageUrl {get;set;}
-	public string Descriptor {get;set;}
+	public required string Url {get;set;}
+	public required Dictionary<string, Link> _links {get;set;}
+	public required string ImageUrl {get;set;}
+	public required string Descriptor {get;set;}
 
 	public override string ToString()
 	{
 		return Printer.Print(this);
 	}
+}
+
+class Contact
+{
+	public Guid Id {get;set;}
+	public required string DisplayName {get;set;}
+	public required string UniqueName {get;set;}	
 }

@@ -4,8 +4,8 @@ namespace Yarkov.Tfs.Models;
 
 class FieldChange
 {
-	public string OldValue {get;set;}
-	public string NewValue {get;set;}
+	public required object OldValue {get;set;}
+	public required object NewValue {get;set;}
 
 	public override string ToString()
 	{

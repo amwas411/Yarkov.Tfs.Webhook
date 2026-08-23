@@ -10,7 +10,7 @@ public static class Printer
 		ArgumentNullException.ThrowIfNull(entity);
 
 		var sb = new StringBuilder();
-		var dictionaries = new List<string> {"_links", "Fields", "ResourceContainers"};
+		var dictionaries = new List<string> {"_links", "Fields", "RevisionFields", "ResourceContainers"};
 		foreach (var property in entity.GetType().GetProperties())
 		{
 			if (dictionaries.Contains(property.Name))
@@ -37,7 +37,38 @@ $$"""
 				}
 				else if (property.Name == "Fields")
 				{
-					foreach (var item in value as Dictionary<string, FieldChange>)
+					if (value as Dictionary<string, FieldChange> != null)
+					{
+						foreach (var item in value as Dictionary<string, FieldChange>)
+						{
+							sb.AppendLine(
+$$"""
+{{property.Name}}: {
+{{item.Key}}: {
+{{item.Value}}
+}
+}
+""");
+						}
+					}
+					else
+					{
+						foreach (var item in value as Dictionary<string, object>)
+						{
+							sb.AppendLine(
+$$"""
+{{property.Name}}: {
+{{item.Key}}: {
+{{item.Value}}
+}
+}
+""");
+						}
+					}
+				}
+				else if (property.Name == "RevisionFields")
+				{
+					foreach (var item in value as Dictionary<string, object>)
 					{
 						sb.AppendLine(
 $$"""
