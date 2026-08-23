@@ -9,10 +9,10 @@ builder.Services.AddOptions<FileStorageOptions>().Bind(builder.Configuration.Get
 var app = builder.Build();
 
 
-app.MapPost("/probe", (FileStorage s, HttpContext ctx) =>
+app.MapPost("/probe", async (FileStorage s, HttpContext ctx) =>
 {
   var buffer = new byte[(int)ctx.Request.ContentLength];
-  ctx.Request.Body.ReadAsync(buffer).GetAwaiter().GetResult();
+  await ctx.Request.Body.ReadAsync(buffer);
   var payload = Encoding.UTF8.GetString(buffer);
 
   var sb = new StringBuilder();
