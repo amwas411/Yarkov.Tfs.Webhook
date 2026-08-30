@@ -1,4 +1,3 @@
-using System.Net;
 using Microsoft.AspNetCore.Http.Extensions;
 using Yarkov.Tfs.Exceptions;
 using Yarkov.Tfs.Models;
@@ -35,22 +34,38 @@ app.MapPost("/timesheet", async (FileStorage s, HttpContext ctx, TfsResponse res
 		{
       throw new YarkovException($"\"Response.Resource.RevisedBy\" is null.");
 		}
-
     if (!response.Resource.Fields.ContainsKey(tfsCompletedWorkFieldName))
     {
       throw new YarkovException($"Could not get \"Completed Work\" from a request: \"Response.Resource.Fields.{tfsCompletedWorkFieldName}\" is empty or nonexistent.");
     }
-
-    if (!DateTime.TryParse(response.Resource.Fields[tfsChangedDateFieldName].NewValue.ToString(), out var dateTime))
+    if (!response.Resource.Revision.Fields.ContainsKey(tfsTitleFieldName))
     {
-      throw new YarkovException($"Could not get task's \"Changed Date\" from a request: \"Response.Resource.Fields.{tfsChangedDateFieldName}\" is empty or nonexistent.");
+      throw new YarkovException($"Could not get \"Title\" from a request: \"response.Resource.Revision.Fields.{tfsTitleFieldName}\" is empty or nonexistent.");
     }
-  
+    if (!response.Resource.Revision.Fields.ContainsKey(tfsProjectFieldName))
+    {
+      throw new YarkovException($"Could not get \"Title\" from a request: \"response.Resource.Revision.Fields.{tfsProjectFieldName}\" is empty or nonexistent.");
+    }
+
+    var changedDate = response.CreatedDate;
+    if (DateTime.TryParse(response.Resource.Fields[tfsChangedDateFieldName]?.NewValue?.ToString(), out var dateTime))
+    {
+      changedDate = dateTime;
+    }
+    if (!double.TryParse(response.Resource.Fields[tfsCompletedWorkFieldName].OldValue?.ToString(), out var oldCompletedWork))
+		{
+			oldCompletedWork = 0.0;
+		}
+    if (!double.TryParse(response.Resource.Fields[tfsCompletedWorkFieldName].NewValue?.ToString(), out var actualCompletedWork))
+	  {
+			actualCompletedWork = 0.0;
+		}
+    
     s.SaveToFile(
       "timesheet.csv",
-      $"{dateTime:yyyy/MM/dd HH:mm:ss}," + 
-      $"\"{response.Resource.Revision.Fields[tfsTitleFieldName]}\"," +
-      $"{response.Resource.Fields[tfsCompletedWorkFieldName].NewValue}," +
+      $"{changedDate:yyyy/MM/dd HH:mm:ss}," + 
+      $"\"{response.Resource.Revision.Fields[tfsTitleFieldName].ToString()?.Trim('"')}\"," +
+      $"{Math.Round(actualCompletedWork - oldCompletedWork, 3)}," +
       $"{response.Resource._links["html"].Href}," + 
       $"{response.Resource.RevisedBy.UniqueName}," +
       $"{response.Resource.Revision.Fields[tfsProjectFieldName]}",
@@ -59,8 +74,7 @@ app.MapPost("/timesheet", async (FileStorage s, HttpContext ctx, TfsResponse res
   }
   catch (YarkovException e)
 	{
-		await s.Log(e.Message, "ERROR", ctx.Request.GetDisplayUrl());
-    ctx.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+		await s.Log(e.Message, "INFO", ctx.Request.GetDisplayUrl());
     return "";
 	}
   catch (Exception e)
@@ -71,11 +85,5 @@ app.MapPost("/timesheet", async (FileStorage s, HttpContext ctx, TfsResponse res
 
   return string.Empty;
 });
-
-app.MapPost("/commit", async () =>
-{
-  return "";
-});
-
 
 app.Run();
