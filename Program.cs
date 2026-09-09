@@ -60,11 +60,11 @@ app.MapPost("/timesheet", async (FileStorage s, HttpContext ctx, TfsResponse res
 	  {
 			actualCompletedWork = 0.0;
 		}
-    
+    var title = response.Resource.Revision.Fields[tfsTitleFieldName]?.ToString().Replace("\"", string.Empty).Replace(",", string.Empty);
     s.SaveToFile(
       "timesheet.csv",
       $"{changedDate:yyyy/MM/dd HH:mm:ss}," + 
-      $"\"{response.Resource.Revision.Fields[tfsTitleFieldName].ToString()?.Trim('"')}\"," +
+      $"\"{title}\"," +
       $"{Math.Round(actualCompletedWork - oldCompletedWork, 3)}," +
       $"{response.Resource._links["html"].Href}," + 
       $"{response.Resource.RevisedBy.UniqueName}," +
