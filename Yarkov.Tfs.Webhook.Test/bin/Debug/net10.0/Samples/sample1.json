@@ -1,0 +1,143 @@
+{
+  "subscriptionId": "9c28c45a-a747-408f-b49c-abebba372331",
+  "notificationId": 377,
+  "id": "9d792631-6044-4d5f-9d84-c23f2468788b",
+  "eventType": "workitem.updated",
+  "publisherId": "tfs",
+  "message": null,
+  "detailedMessage": null,
+  "resource": {
+    "id": 9,
+    "workItemId": 358448,
+    "rev": 9,
+    "revisedBy": {
+      "id": "e27f5b85-f2fe-4811-8899-c55a623ea1d0",
+      "name": "User <company\\User>",
+      "displayName": "User",
+      "url": "https://tfs.company.ru/Collection/_apis/Identities/e27f5b85-f2fe-4811-8899-c55a623ea1d0",
+      "_links": {
+        "avatar": {
+          "href": "https://tfs.company.ru/Collection/_apis/GraphProfile/MemberAvatars/win.Uy0xLTUtMjEtNzI5OTY4Mzc2LTM3MDc0NDUyMjMtMjkzMDU5MDc3My0zNjk5Mg"
+        }
+      },
+      "uniqueName": "company\\User",
+      "imageUrl": "https://tfs.company.ru/Collection/_apis/GraphProfile/MemberAvatars/win.Uy0xLTUtMjEtNzI5OTY4Mzc2LTM3MDc0NDUyMjMtMjkzMDU5MDc3My0zNjk5Mg",
+      "descriptor": "win.Uy0xLTUtMjEtNzI5OTY4Mzc2LTM3MDc0NDUyMjMtMjkzMDU5MDc3My0zNjk5Mg"
+    },
+    "revisedDate": "9999-01-01T00:00:00Z",
+    "fields": {
+      "System.Rev": {
+        "oldValue": 8,
+        "newValue": 9
+      },
+      "System.AuthorizedDate": {
+        "oldValue": "2026-09-09T14:39:58.593Z",
+        "newValue": "2026-09-09T16:08:59.99Z"
+      },
+      "System.RevisedDate": {
+        "oldValue": "2026-09-09T16:08:59.99Z",
+        "newValue": "9999-01-01T00:00:00Z"
+      },
+      "System.ChangedDate": {
+        "oldValue": "2026-09-09T14:39:58.593Z",
+        "newValue": "2026-09-09T16:08:59.99Z"
+      },
+      "System.Watermark": {
+        "oldValue": 3134362,
+        "newValue": 3134818
+      },
+      "Microsoft.VSTS.Scheduling.CompletedWork": {
+        "oldValue": 3.0,
+        "newValue": 3.75
+      }
+    },
+    "_links": {
+      "self": {
+        "href": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448/updates/9"
+      },
+      "workItemUpdates": {
+        "href": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448/updates"
+      },
+      "parent": {
+        "href": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448"
+      },
+      "html": {
+        "href": "https://tfs.company.ru/web/wi.aspx?pcguid=70c2d8cc-553f-4819-8ba2-e56afc3bf040&id=358448"
+      }
+    },
+    "url": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448/updates/9",
+    "revision": {
+      "id": 358448,
+      "rev": 9,
+      "fields": {
+        "System.AreaPath": "MyProject",
+        "System.TeamProject": "MyProject",
+        "System.IterationPath": "MyProject\\Релиз 2.21.0 (1 спринт)",
+        "System.WorkItemType": "Task",
+        "System.State": "Active",
+        "System.Reason": "Investigate",
+        "System.AssignedTo": "User <company\\User>",
+        "System.CreatedDate": "2026-09-08T10:20:59.663Z",
+        "System.CreatedBy": "User2 <company\\User2>",
+        "System.ChangedDate": "2026-09-09T16:08:59.99Z",
+        "System.ChangedBy": "User <company\\User>",
+        "System.CommentCount": 1,
+        "System.Title": "Реализовать сервис получения погоды",
+        "Microsoft.VSTS.Scheduling.RemainingWork": 15.0,
+        "Microsoft.VSTS.Scheduling.OriginalEstimate": 15.0,
+        "Microsoft.VSTS.Scheduling.CompletedWork": 3.75,
+        "Microsoft.VSTS.Common.StateChangeDate": "2026-09-08T12:56:47.48Z",
+        "Microsoft.VSTS.Common.ActivatedDate": "2026-09-08T12:56:47.48Z",
+        "Microsoft.VSTS.Common.ActivatedBy": "User <company\\User>",
+        "Microsoft.VSTS.Common.Priority": 2,
+        "Microsoft.VSTS.Common.Triage": "Pending",
+        "Microsoft.VSTS.Common.Discipline": "Analysis",
+        "Microsoft.VSTS.CMMI.Blocked": "No",
+        "Microsoft.VSTS.CMMI.TaskType": "Planned",
+        "Microsoft.VSTS.CMMI.RequiresReview": "No",
+        "Microsoft.VSTS.CMMI.RequiresTest": "No",
+        "Custom.JiraURL": "123123213 ",
+        "System.Description": "<div><b>Реализовать сервис получения погоды</b> </div>",
+        "System.Parent": 353973
+      },
+      "relations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "url": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/353973",
+          "attributes": {
+            "isLocked": false,
+            "name": "Parent"
+          }
+        }
+      ],
+      "_links": {
+        "self": {
+          "href": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448/revisions/9"
+        },
+        "workItemRevisions": {
+          "href": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448/revisions"
+        },
+        "parent": {
+          "href": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448"
+        }
+      },
+      "url": "https://tfs.company.ru/Collection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358448/revisions/9"
+    }
+  },
+  "resourceVersion": "1.0",
+  "resourceContainers": {
+    "collection": {
+      "id": "70c2d8cc-553f-4819-8ba2-e56afc3bf040",
+      "baseUrl": "https://tfs.company.ru/Collection/"
+    },
+    "server": {
+      "id": "fdf7e5b7-5931-42cf-b770-f123a5443ec4",
+      "baseUrl": "https://tfs.company.ru/"
+    },
+    "project": {
+      "id": "8373004b-4de0-4667-a80e-a28dc4b291cc",
+      "baseUrl": "https://tfs.company.ru/Collection/"
+    }
+  },
+  "createdDate": "2026-09-09T16:09:07.6401498Z"
+}
