@@ -6,7 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <!-- <ItemGroup>
-    <InternalsVisibleTo Include="Yarkov.Tfs.Webhook.Test" />
-  </ItemGroup> -->
+  <ItemGroup>
+    <None Update="codex.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -1,11 +1,12 @@
 using System.Globalization;
+using Microsoft.Extensions.Options;
 using Yarkov.Tfs.Webhook.Exceptions;
 using Yarkov.Tfs.Webhook.Models;
 using Yarkov.Tfs.Webhook.Storage;
 
 public class TimesheetController
 {
-  public static void Invoke(IFileStorage s, ILogger logger, TfsResponse response)
+  public static void Invoke(IFileStorage s, ILogger logger, IOptions<AppOptions> options, TfsResponse response)
   {
     var culture = CultureInfo.InvariantCulture;
     try
@@ -56,19 +57,19 @@ public class TimesheetController
       }
       var title = response.Resource.Revision.Fields[Constants.FieldNames.TitleFieldName]?.ToString()?.Replace("\"", string.Empty).Replace(",", string.Empty);
       s.Save(
-        Constants.TimesheetControllerConstants.CsvFileName,
+        options.Value.TimesheetFileName,
         $"{changedDate:yyyy.MM.dd HH:mm:ss}," +
         $"\"{title}\"," +
         $"{Math.Round(actualCompletedWork - oldCompletedWork, 3).ToString(culture)}," +
         $"{response.Resource._links["html"].Href}," +
         $"{response.Resource.RevisedBy.UniqueName}," +
         $"{response.Resource.Revision.Fields[Constants.FieldNames.ProjectFieldName]}",
-        Constants.TimesheetControllerConstants.CsvHeader
+        Constants.TimesheetController.CsvHeader
       );
     }
     catch (YarkovException e)
     {
-      logger.Log(e.Message, "INFO", typeof(TimesheetController).Name);
+      logger.Log(e.ToString(), "WARN", typeof(TimesheetController).Name);
     }
     catch (Exception e)
     {

@@ -6,7 +6,7 @@ class Logger: ILogger
   private IFileStorage _storage;
   private string _logFileName;
 
-  public Logger(IFileStorage fileStorage, IOptions<FileStorageOptions> options)
+  public Logger(IFileStorage fileStorage, IOptions<AppOptions> options)
   {
     ArgumentNullException.ThrowIfNull(fileStorage);
     ArgumentNullException.ThrowIfNull(options);

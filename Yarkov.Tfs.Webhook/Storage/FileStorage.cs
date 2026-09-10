@@ -8,7 +8,7 @@ class FileStorage: IFileStorage
   private DirectoryInfo _directory;
   private object _lock = new object();
 
-  public FileStorage(IOptions<FileStorageOptions> options)
+  public FileStorage(IOptions<AppOptions> options)
   {
     ArgumentException.ThrowIfNullOrEmpty(options.Value.WorkDirectoryName);
     ArgumentException.ThrowIfNullOrEmpty(options.Value.LogFileName);

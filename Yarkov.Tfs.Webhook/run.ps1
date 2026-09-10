@@ -13,7 +13,10 @@ if ("" -eq $Location) {
   $Location = (Get-Item "..\Yarkov.Tfs.Webhook\").FullName;
 }
 
-$job = start-job -ScriptBlock {dotnet run --project $args } -ArgumentList ($Location)
+$job = start-job -ScriptBlock {dotnet run -c Release --project $args } -ArgumentList ($Location)
+if ($null -eq $job) {
+  throw "Job is null, may be there was compilation errors";
+}
 Write-Host "[$(get-date -Format "dd/MM/yyyy HH:mm:ss")] [INFO] New job started with Id = $($Job.Id)"
 Write-Host "[$(get-date -Format "dd/MM/yyyy HH:mm:ss")] [INFO] Waiting for the job to give some output"
 $job_output = ($job|Receive-Job)
