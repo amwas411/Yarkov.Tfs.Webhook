@@ -1,0 +1,146 @@
+{
+  "subscriptionId": "5852fcd2-347d-4d79-a555-c413cd2926d4",
+  "notificationId": 1,
+  "id": "ddae1fbe-8285-410b-98f4-3731dc5dc88d",
+  "eventType": "workitem.commented",
+  "publisherId": "tfs",
+  "message": null,
+  "detailedMessage": null,
+  "resource": {
+    "id": 1,
+    "rev": 71,
+    "fields": {
+      "System.AreaPath": "YarProject",
+      "System.TeamProject": "YarProject",
+      "System.IterationPath": "YarProject\\Sprint 1",
+      "System.WorkItemType": "Task",
+      "System.State": "Doing",
+      "System.Reason": "Reactivated",
+      "System.AssignedTo": "Павел Ярков <amw9000@outlook.com>",
+      "System.CreatedDate": "2026-09-04T18:43:27.98Z",
+      "System.CreatedBy": "Павел Ярков <amw9000@outlook.com>",
+      "System.ChangedDate": "2026-09-10T08:22:14.91Z",
+      "System.ChangedBy": "Павел Ярков <amw9000@outlook.com>",
+      "System.CommentCount": 36,
+      "System.Title": "Realize Hello world program on .NET8,C#",
+      "Microsoft.VSTS.Scheduling.RemainingWork": 1.0,
+      "Microsoft.VSTS.Common.StateChangeDate": "2026-09-06T14:09:23.543Z",
+      "Microsoft.VSTS.Common.ActivatedDate": "2026-09-06T14:09:23.543Z",
+      "Microsoft.VSTS.Common.ActivatedBy": "Павел Ярков <amw9000@outlook.com>",
+      "Microsoft.VSTS.Common.Priority": 2,
+      "System.Description": "<p>hello </p>",
+      "System.History": "<div>123</div>"
+    },
+    "multilineFieldsFormat": {
+      "System.Description": "html",
+      "System.History": "html"
+    },
+    "relations": [
+      {
+        "rel": "ArtifactLink",
+        "url": "vstfs:///VersionControl/Changeset/6621f94f-2cbb-48d2-8c33-c490f9b1690b%2F31",
+        "attributes": {
+          "authorizedDate": "2026-09-05T21:18:09.94Z",
+          "id": 56846786,
+          "resourceCreatedDate": "2026-09-05T21:18:09.94Z",
+          "resourceModifiedDate": "2026-09-05T21:18:09.94Z",
+          "revisedDate": "9999-01-01T00:00:00Z",
+          "name": "Fixed in changeset"
+        }
+      },
+      {
+        "rel": "ArtifactLink",
+        "url": "vstfs:///VersionControl/Changeset/6621f94f-2cbb-48d2-8c33-c490f9b1690b%2F26",
+        "attributes": {
+          "authorizedDate": "2026-09-05T21:07:52.127Z",
+          "id": 56846780,
+          "resourceCreatedDate": "2026-09-05T21:07:52.127Z",
+          "resourceModifiedDate": "2026-09-05T21:07:52.127Z",
+          "revisedDate": "9999-01-01T00:00:00Z",
+          "name": "Fixed in changeset"
+        }
+      },
+      {
+        "rel": "ArtifactLink",
+        "url": "vstfs:///VersionControl/Changeset/25",
+        "attributes": {
+          "authorizedDate": "2026-09-05T20:42:15.217Z",
+          "id": 56846779,
+          "resourceCreatedDate": "2026-09-05T20:42:15.217Z",
+          "resourceModifiedDate": "2026-09-05T20:42:15.217Z",
+          "revisedDate": "9999-01-01T00:00:00Z",
+          "name": "Fixed in Changeset"
+        }
+      },
+      {
+        "rel": "ArtifactLink",
+        "url": "vstfs:///VersionControl/Changeset/24",
+        "attributes": {
+          "authorizedDate": "2026-09-05T20:30:54.603Z",
+          "id": 56846778,
+          "resourceCreatedDate": "2026-09-05T20:30:54.603Z",
+          "resourceModifiedDate": "2026-09-05T20:30:54.603Z",
+          "revisedDate": "9999-01-01T00:00:00Z",
+          "name": "Fixed in Changeset"
+        }
+      },
+      {
+        "rel": "ArtifactLink",
+        "url": "vstfs:///VersionControl/Changeset/23",
+        "attributes": {
+          "authorizedDate": "2026-09-05T20:07:53.87Z",
+          "id": 56846754,
+          "resourceCreatedDate": "2026-09-05T20:07:53.87Z",
+          "resourceModifiedDate": "2026-09-05T20:07:53.87Z",
+          "revisedDate": "9999-01-01T00:00:00Z",
+          "name": "Fixed in Changeset"
+        }
+      }
+    ],
+    "commentVersionRef": {
+      "commentId": 34273211,
+      "version": 1,
+      "url": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1/comments/34273211/versions/1"
+    },
+    "_links": {
+      "self": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1"
+      },
+      "workItemUpdates": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1/updates"
+      },
+      "workItemRevisions": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1/revisions"
+      },
+      "workItemComments": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1/comments"
+      },
+      "html": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_workitems/edit/1"
+      },
+      "workItemType": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItemTypes/Task"
+      },
+      "fields": {
+        "href": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/fields"
+      }
+    },
+    "url": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1"
+  },
+  "resourceVersion": "1.0",
+  "resourceContainers": {
+    "collection": {
+      "id": "e95bd475-ccf8-43bb-896f-f3760a2c7a0e",
+      "baseUrl": "https://dev.azure.com/amw9000/"
+    },
+    "account": {
+      "id": "fea0836d-419e-4d90-870b-df7f800f397d",
+      "baseUrl": "https://dev.azure.com/amw9000/"
+    },
+    "project": {
+      "id": "6621f94f-2cbb-48d2-8c33-c490f9b1690b",
+      "baseUrl": "https://dev.azure.com/amw9000/"
+    }
+  },
+  "createdDate": "2026-09-10T08:22:21.7367042Z"
+}

@@ -1,0 +1,117 @@
+{
+  "subscriptionId": "561a7e9e-d280-40e1-a04b-191a1d60a4c8",
+  "notificationId": 4,
+  "id": "7dc4384a-6164-41f0-b793-c8db967ffea6",
+  "eventType": "workitem.commented",
+  "publisherId": "tfs",
+  "message": null,
+  "detailedMessage": null,
+  "resource": {
+    "id": 358437,
+    "rev": 16,
+    "fields": {
+      "System.AreaPath": "MyProject",
+      "System.TeamProject": "MyProject",
+      "System.IterationPath": "MyProject\\Релиз 2.21.0 (1 спринт)",
+      "System.WorkItemType": "Bug",
+      "System.State": "Resolved",
+      "System.Reason": "Fixed",
+      "System.AssignedTo": "User <Company\\User>",
+      "System.CreatedDate": "2026-09-08T09:58:15.727Z",
+      "System.CreatedBy": "User2 <Company\\User2>",
+      "System.ChangedDate": "2026-09-09T21:13:01.867Z",
+      "System.ChangedBy": "User3 <Company\\User3>",
+      "System.CommentCount": 10,
+      "System.Title": "Отсутствуют логи по запуску процесса Обработки не назначенных обращений в \"Журнале процессов\"",
+      "Microsoft.VSTS.Scheduling.OriginalEstimate": 1.5,
+      "Microsoft.VSTS.Scheduling.CompletedWork": 1.0,
+      "Microsoft.VSTS.Common.StateChangeDate": "2026-09-08T13:44:13.49Z",
+      "Microsoft.VSTS.Common.ActivatedDate": "2026-09-08T11:51:49.687Z",
+      "Microsoft.VSTS.Common.ActivatedBy": "User <Company\\User>",
+      "Microsoft.VSTS.Common.ResolvedDate": "2026-09-08T13:44:13.49Z",
+      "Microsoft.VSTS.Common.ResolvedBy": "User <Company\\User>",
+      "Microsoft.VSTS.Common.ResolvedReason": "Fixed",
+      "Microsoft.VSTS.Common.Priority": 2,
+      "Microsoft.VSTS.Common.Severity": "3 - Medium",
+      "Microsoft.VSTS.Common.ValueArea": "Business",
+      "Microsoft.VSTS.Common.Triage": "Pending",
+      "Microsoft.VSTS.Common.Discipline": "Development",
+      "Microsoft.VSTS.CMMI.Blocked": "No",
+      "Microsoft.VSTS.CMMI.RootCause": "Unknown",
+      "System.History": "<div>$ревью</div>",
+      "Microsoft.VSTS.TCM.ReproSteps": "<div><div style=\"box-sizing:border-box;\"><b style=\"box-sizing:border-box;\">123:</b></div></div>",
+      "Microsoft.VSTS.CMMI.Symptom": "<div><span style=\"display:inline !important;\">Процесс не отображается в <span style=\"display:inline !important;\">&quot;Журнале процессов&quot;</span>.</span><br> </div>",
+      "Microsoft.VSTS.CMMI.ProposedFix": "<div><span style=\"display:inline !important;\">Добавлено журналирование.</span><br> </div>",
+      "System.Tags": "123123",
+      "System.Parent": 354257
+    },
+    "relations": [
+      {
+        "rel": "System.LinkTypes.Hierarchy-Reverse",
+        "url": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/354257",
+        "attributes": {
+          "isLocked": false,
+          "name": "Parent"
+        }
+      },
+      {
+        "rel": "ArtifactLink",
+        "url": "vstfs:///VersionControl/Changeset/110635",
+        "attributes": {
+          "authorizedDate": "2026-09-08T13:12:57.477Z",
+          "id": 379051,
+          "resourceCreatedDate": "2026-09-08T13:12:57.477Z",
+          "resourceModifiedDate": "2026-09-08T13:12:57.477Z",
+          "revisedDate": "9999-01-01T00:00:00Z",
+          "comment": "545",
+          "name": "Fixed in Changeset"
+        }
+      }
+    ],
+    "commentVersionRef": {
+      "commentId": 443369,
+      "version": 1,
+      "url": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358437/comments/443369/versions/1"
+    },
+    "_links": {
+      "self": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358437"
+      },
+      "workItemUpdates": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358437/updates"
+      },
+      "workItemRevisions": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358437/revisions"
+      },
+      "workItemComments": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358437/comments"
+      },
+      "html": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_workitems/edit/358437"
+      },
+      "workItemType": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItemTypes/Bug"
+      },
+      "fields": {
+        "href": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/fields"
+      }
+    },
+    "url": "https://tfs.Company.ru/TerrasoftCollection/8373004b-4de0-4667-a80e-a28dc4b291cc/_apis/wit/workItems/358437"
+  },
+  "resourceVersion": "1.0",
+  "resourceContainers": {
+    "collection": {
+      "id": "70c2d8cc-553f-4819-8ba2-e56afc3bf040",
+      "baseUrl": "https://tfs.Company.ru/TerrasoftCollection/"
+    },
+    "server": {
+      "id": "fdf7e5b7-5931-42cf-b770-f123a5443ec4",
+      "baseUrl": "https://tfs.Company.ru/"
+    },
+    "project": {
+      "id": "8373004b-4de0-4667-a80e-a28dc4b291cc",
+      "baseUrl": "https://tfs.Company.ru/TerrasoftCollection/"
+    }
+  },
+  "createdDate": "2026-09-09T21:13:10.5318197Z"
+}

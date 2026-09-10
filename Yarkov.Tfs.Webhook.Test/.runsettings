@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <TFS_PAT>123</TFS_PAT>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>
