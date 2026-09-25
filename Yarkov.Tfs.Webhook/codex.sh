@@ -122,7 +122,8 @@ Preface:
   5.1. Translate text to russian language before posting;
   5.2. Format text to HTML;
   5.3. The last paragraph should be in format: \"Session ID: {your current session ID}\"
-6. You are forbidden to modify any other work items except the target"
+6. You are forbidden to modify any other work items except the target;
+7. Documentation for BPMSoft is located at https://edu.bpmsoft.ru/baza-znaniy/. Do not use the Terrasoft web site."
 
 # Notes for Windows:
 # 1. Using powershell command "Invoke-WebRequest" inside codex results in SEC_E_NO_CREDENTIALS error. That is a bug, see https://github.com/openai/codex/issues/17459. Workaround is to require an agent to use python for making any API requests.
