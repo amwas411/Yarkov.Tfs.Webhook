@@ -10,7 +10,7 @@ namespace Yarkov.Tfs.Webhook.Test;
 public static class TestConstants
 {
   public static string LogFileName = "log.txt";
-  public static string TerminalRunner = "E:/Programs SSD/Git/bin/bash.exe";
+  public static string TerminalRunner = "bash";
   public static string WorkDirectoryName = "data";
   public static string AiWorkDirectoryName = "aidata";
   public static string TimesheetFileName = "timesheet.csv";
