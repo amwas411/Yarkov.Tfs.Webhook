@@ -1,14 +1,14 @@
 {
   "subscriptionId": "5852fcd2-347d-4d79-a555-c413cd2926d4",
-  "notificationId": 1,
-  "id": "ddae1fbe-8285-410b-98f4-3731dc5dc88d",
+  "notificationId": 8,
+  "id": "eb3f1113-7618-484c-8146-4e999c81a2a3",
   "eventType": "workitem.commented",
   "publisherId": "tfs",
   "message": null,
   "detailedMessage": null,
   "resource": {
     "id": 1,
-    "rev": 71,
+    "rev": 78,
     "fields": {
       "System.AreaPath": "YarProject",
       "System.TeamProject": "YarProject",
@@ -19,9 +19,9 @@
       "System.AssignedTo": "Павел Ярков <amw9000@outlook.com>",
       "System.CreatedDate": "2026-09-04T18:43:27.98Z",
       "System.CreatedBy": "Павел Ярков <amw9000@outlook.com>",
-      "System.ChangedDate": "2026-09-10T08:22:14.91Z",
+      "System.ChangedDate": "2026-09-10T20:55:14.983Z",
       "System.ChangedBy": "Павел Ярков <amw9000@outlook.com>",
-      "System.CommentCount": 36,
+      "System.CommentCount": 43,
       "System.Title": "Realize Hello world program on .NET8,C#",
       "Microsoft.VSTS.Scheduling.RemainingWork": 1.0,
       "Microsoft.VSTS.Common.StateChangeDate": "2026-09-06T14:09:23.543Z",
@@ -29,7 +29,7 @@
       "Microsoft.VSTS.Common.ActivatedBy": "Павел Ярков <amw9000@outlook.com>",
       "Microsoft.VSTS.Common.Priority": 2,
       "System.Description": "<p>hello </p>",
-      "System.History": "<div>$ревью2</div>"
+      "System.History": "<p>Начинаю проверку изменений по рабочему элементу.</p><p>Session ID: 01a08d1a-0578-7dc3-8f4b-4639086462c3</p>"
     },
     "multilineFieldsFormat": {
       "System.Description": "html",
@@ -98,9 +98,9 @@
       }
     ],
     "commentVersionRef": {
-      "commentId": 34273211,
+      "commentId": 34276022,
       "version": 1,
-      "url": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1/comments/34273211/versions/1"
+      "url": "https://dev.azure.com/amw9000/6621f94f-2cbb-48d2-8c33-c490f9b1690b/_apis/wit/workItems/1/comments/34276022/versions/1"
     },
     "_links": {
       "self": {
@@ -142,5 +142,5 @@
       "baseUrl": "https://dev.azure.com/amw9000/"
     }
   },
-  "createdDate": "2026-09-10T08:22:21.7367042Z"
+  "createdDate": "2026-09-10T20:55:22.1564256Z"
 }

@@ -1,5 +1,8 @@
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Text;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Yarkov.Tfs.Webhook.Exceptions;
 using Yarkov.Tfs.Webhook.Models;
@@ -7,27 +10,38 @@ using Yarkov.Tfs.Webhook.Storage;
 
 public class AiController
 {
-  public static async void Invoke(IFileStorage storage, ILogger logger, IOptions<AppOptions> options, TfsResponseComment response)
+  private static ConcurrentDictionary<int, Task> ActiveThreads = [];
+  public static async Task<IResult> Invoke(IFileStorage storage, ILogger logger, IOptions<AppOptions> options, TfsResponseComment response, HttpContext ctx, [FromQuery]int? id)
   {
+    if (id.HasValue)
+    {
+      var t = ActiveThreads.GetValueOrDefault(id.Value);
+      if (t == null)
+      {
+        return TypedResults.BadRequest();
+      }
+      if (t.IsCompleted)
+      {
+        return TypedResults.Ok();
+      }
+      return TypedResults.NoContent();
+    }
+
     try
     {
       #region Validation
       if (response.Resource.Fields == null)
       {
-        throw new YarkovException($"\"Response.Resource.Fields\" is null.");
+        throw new YarkovValidationException($"\"{nameof(response)}.{response.Resource}.{response.Resource.Fields}\" is null.");
       }
       if (!response.Resource.Fields.ContainsKey(Constants.FieldNames.HistoryFieldName) || 
         string.IsNullOrEmpty(response.Resource.Fields[Constants.FieldNames.HistoryFieldName].ToString()))
       {
-        throw new YarkovException($"Could not get \"History\" from a request: \"Response.Resource.Fields.{Constants.FieldNames.HistoryFieldName}\" is empty or nonexistent.");
-      }
-      if (response.Resource._links == null)
-      {
-        throw new YarkovException($"\"Response.Resource._links\" is null.");
+        throw new YarkovValidationException($"\"{nameof(response)}.{response.Resource}.{response.Resource.Fields}[{Constants.FieldNames.HistoryFieldName}]\" is null or empty.");
       }
       if (!response.Resource.Fields[Constants.FieldNames.HistoryFieldName].ToString().ToLowerInvariant().Contains(options.Value.AiName))
       {
-        throw new YarkovException($"Message does not contain AI name \"{options.Value.AiName}\".");
+        throw new YarkovAiException($"Message does not contain AI name \"{options.Value.AiName}\".");
       }
 
       #endregion
@@ -48,7 +62,7 @@ public class AiController
       var runnerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "codex.sh").Replace("\\", "/");
       var formatArgument = "-c \"{0}\"";
       var diagnostic = options.Value.AiDiagnosticMode ? "--diag" : "";
-      var prompt = $"{runnerPath} -w \"{response.Resource._links["html"].Href}\" --cd {directoryPath} --review {diagnostic}";
+      var prompt = $"{runnerPath} -w \"{response.Resource.Url}\" --cd {directoryPath} --review {diagnostic}";
       var arguments = string.Format(formatArgument, prompt);
       
       var info = new ProcessStartInfo()
@@ -60,31 +74,43 @@ public class AiController
         RedirectStandardOutput = true,
       };
 
-      var process = Process.Start(info) ?? throw new YarkovProcessNotStartedException(info);
-
-      var outputReader = process.StandardOutput;
-      var errorReader = process.StandardError;
-
-      var error = await errorReader.ReadToEndAsync() ?? "";
-      var output = await outputReader.ReadToEndAsync() ?? "";
-      var stringBuilder = new StringBuilder();
-      stringBuilder.AppendLine($"{DateTime.Now:yyyy.MM.dd HH:mm:ss}");
-      stringBuilder.AppendLine(error);
-      stringBuilder.AppendLine(output);
-      var result = stringBuilder.ToString();
-      if (!string.IsNullOrEmpty(error) || !string.IsNullOrEmpty(output))
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+      var t = Task.Run(async () =>
       {
-        storage.Save(options.Value.LogFileName, result);
-      }
+        logger.Log(Thread.CurrentThread.ManagedThreadId.ToString(), "INFO", typeof(AiController).Name);
+        var process = Process.Start(info) ?? throw new YarkovProcessNotStartedException(info);
+
+        var outputReader = process.StandardOutput;
+        var errorReader = process.StandardError;
+
+        var error = await errorReader.ReadToEndAsync() ?? "";
+        var output = await outputReader.ReadToEndAsync() ?? "";
+        var stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine($"{DateTime.Now:yyyy.MM.dd HH:mm:ss}");
+        stringBuilder.AppendLine(error);
+        stringBuilder.AppendLine(output);
+        var result = stringBuilder.ToString();
+        if (!string.IsNullOrEmpty(error) || !string.IsNullOrEmpty(output))
+        {
+          storage.Save(options.Value.LogFileName, result);
+        }
+      });
+      ActiveThreads.AddOrUpdate(t.Id, t, (threadId, task) => task);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+      return TypedResults.Accepted(string.Concat([ctx.Request.PathBase.Value, ctx.Request.Path.Value, $"?id={t.Id}"]));
     }
-    catch (YarkovException e)
+    catch (YarkovAiException e)
     {
-      logger.Log(e.ToString(), "WARN", typeof(AiController).Name);
+      return TypedResults.Ok(e.Message);
     }
-    catch (Exception e)
+    catch (YarkovClientException e)
     {
-      logger.Log(e.ToString(), "ERROR", typeof(AiController).Name);
-      throw;
+      return TypedResults.BadRequest(e.Message);
+    }
+    catch (YarkovServerException e)
+    {
+      return TypedResults.InternalServerError(e.Message);
     }
   }
 }

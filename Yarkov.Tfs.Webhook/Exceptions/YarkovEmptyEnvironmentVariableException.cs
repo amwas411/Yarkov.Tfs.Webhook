@@ -1,5 +1,5 @@
-using Yarkov.Tfs.Webhook.Exceptions;
+namespace Yarkov.Tfs.Webhook.Exceptions;
 
-class YarkovEmptyEnvironmentVariableException(string variable) : YarkovException(variable)
+class YarkovEmptyEnvironmentVariableException(string variable) : YarkovServerException(variable)
 {
 }

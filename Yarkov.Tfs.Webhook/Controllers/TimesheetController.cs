@@ -14,31 +14,31 @@ public class TimesheetController
       #region Validation
       if (response.Resource.Fields == null)
       {
-        throw new YarkovException($"\"Response.Resource.Fields\" is null.");
+        throw new YarkovValidationException($"\"Response.Resource.Fields\" is null.");
       }
       if (response.Resource.Revision == null)
       {
-        throw new YarkovException($"\"Response.Resource.Revision\" is null.");
+        throw new YarkovValidationException($"\"Response.Resource.Revision\" is null.");
       }
       if (response.Resource._links == null)
       {
-        throw new YarkovException($"\"Response.Resource._links\" is null.");
+        throw new YarkovValidationException($"\"Response.Resource._links\" is null.");
       }
       if (response.Resource.RevisedBy == null)
       {
-        throw new YarkovException($"\"Response.Resource.RevisedBy\" is null.");
+        throw new YarkovValidationException($"\"Response.Resource.RevisedBy\" is null.");
       }
       if (!response.Resource.Fields.ContainsKey(Constants.FieldNames.CompletedWorkFieldName))
       {
-        throw new YarkovException($"Could not get \"Completed Work\" from a request: \"Response.Resource.Fields.{Constants.FieldNames.CompletedWorkFieldName}\" is empty or nonexistent.");
+        throw new YarkovValidationException($"Could not get \"Completed Work\" from a request: \"Response.Resource.Fields.{Constants.FieldNames.CompletedWorkFieldName}\" is empty or nonexistent.");
       }
       if (!response.Resource.Revision.Fields.ContainsKey(Constants.FieldNames.TitleFieldName))
       {
-        throw new YarkovException($"Could not get \"Title\" from a request: \"response.Resource.Revision.Fields.{Constants.FieldNames.TitleFieldName}\" is empty or nonexistent.");
+        throw new YarkovValidationException($"Could not get \"Title\" from a request: \"response.Resource.Revision.Fields.{Constants.FieldNames.TitleFieldName}\" is empty or nonexistent.");
       }
       if (!response.Resource.Revision.Fields.ContainsKey(Constants.FieldNames.ProjectFieldName))
       {
-        throw new YarkovException($"Could not get \"Title\" from a request: \"response.Resource.Revision.Fields.{Constants.FieldNames.ProjectFieldName}\" is empty or nonexistent.");
+        throw new YarkovValidationException($"Could not get \"Title\" from a request: \"response.Resource.Revision.Fields.{Constants.FieldNames.ProjectFieldName}\" is empty or nonexistent.");
       }
       #endregion
 
@@ -67,7 +67,7 @@ public class TimesheetController
         Constants.TimesheetController.CsvHeader
       );
     }
-    catch (YarkovException e)
+    catch (YarkovValidationException e)
     {
       logger.Log(e.ToString(), "WARN", typeof(TimesheetController).Name);
     }

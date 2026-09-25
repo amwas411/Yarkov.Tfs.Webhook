@@ -142,7 +142,7 @@ Steps:
 1. Check if the work item has any changesets. If there are none, then consider your task complete. If there are changesets, then you should focus on fulfillment of the work item's description based on its changesets.
 2. Review code in the work item's changesets.
 
-If you have found any issues, post a result comment for the owner of work item with your objections;
+If you have found any issues, then post a result comment with your objections;
 
 If changesets exist and none of the issues have been found, then post the LGTM result comment and consider your task complete."
 

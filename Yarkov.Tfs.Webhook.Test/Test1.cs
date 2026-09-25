@@ -110,7 +110,7 @@ public sealed class Test1
   [TestMethod]
   [DataRow("comment_sample1.json")]
   [DataRow("comment_sample2.json")]
-  public void AiControllerTest(string sample)
+  public async Task AiControllerTest(string sample)
   {
     var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Samples", sample);
     
@@ -135,12 +135,15 @@ public sealed class Test1
     });
 
     Assert.IsNotNull(response);
-    AiController.Invoke(ServiceProvider.GetService<IFileStorage>(), ServiceProvider.GetService<ILogger>(), ServiceProvider.GetService<IOptions<AppOptions>>(), response);
+    AiController.Invoke(ServiceProvider.GetService<IFileStorage>(), ServiceProvider.GetService<ILogger>(), ServiceProvider.GetService<IOptions<AppOptions>>(), response).GetAwaiter().GetResult();
     var result = FileStorage.Storage[TestConstants.LogFileName][0];
     switch (sample)
     {
       case "comment_sample1.json":
-        Assert.AreEqual("2", result);
+        Assert.IsTrue(result.Contains("Preface"));
+        break;
+      case "comment_sample2.json":
+        Assert.IsTrue(result.Contains("YarkovException"));
         break;
       default:
         break;

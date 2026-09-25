@@ -28,7 +28,7 @@ public class ResourceComment
 	public Dictionary<string, object>? Fields {get;set;}
 	public Dictionary<string, Link>? _links {get;set;}
   // public Revision? Revision {get;set;}
-	// public required string Url {get;set;}
+	public required string Url {get;set;}
 	// public int ChangesetId {get;set;}
 	// public Contact? Author {get;set;}
 	// public Contact? CheckedInBy {get;set;}
